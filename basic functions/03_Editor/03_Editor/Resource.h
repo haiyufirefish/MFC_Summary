@@ -7,7 +7,7 @@
 #define IDR_MAINFRAME				128
 #define IDR_My03_EditorTYPE				130
 
-// 新对象的下一组默认值
+// new object mapping value
 //
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS

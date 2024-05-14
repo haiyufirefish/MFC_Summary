@@ -1,10 +1,9 @@
 
-// 03_EditorView.cpp : CMy03_EditorView 类的实现
+// 03_EditorView.cpp : CMy03_EditorView impl
 //
 
 #include "stdafx.h"
-// SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
-// ATL 项目中进行定义，并允许与该项目共享文档代码。
+
 #ifndef SHARED_HANDLERS
 #include "03_Editor.h"
 #endif
@@ -22,7 +21,7 @@
 IMPLEMENT_DYNCREATE(CMy03_EditorView, CView)
 
 BEGIN_MESSAGE_MAP(CMy03_EditorView, CView)
-	// 标准打印命令
+	
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
@@ -31,13 +30,12 @@ BEGIN_MESSAGE_MAP(CMy03_EditorView, CView)
 	ON_WM_CHAR()
 END_MESSAGE_MAP()
 
-// CMy03_EditorView 构造/析构
+// CMy03_EditorView 
 
 CMy03_EditorView::CMy03_EditorView()
 : m_point(0)
 , str(_T(""))
 {
-	// TODO:  在此处添加构造代码
 
 }
 
@@ -47,13 +45,12 @@ CMy03_EditorView::~CMy03_EditorView()
 
 BOOL CMy03_EditorView::PreCreateWindow(CREATESTRUCT& cs)
 {
-	// TODO:  在此处通过修改
-	//  CREATESTRUCT cs 来修改窗口类或样式
+	
 
 	return CView::PreCreateWindow(cs);
 }
 
-// CMy03_EditorView 绘制
+// CMy03_EditorView 
 
 void CMy03_EditorView::OnDraw(CDC* /*pDC*/)
 {
@@ -62,30 +59,27 @@ void CMy03_EditorView::OnDraw(CDC* /*pDC*/)
 	if (!pDoc)
 		return;
 
-	// TODO:  在此处为本机数据添加绘制代码
 }
 
 
-// CMy03_EditorView 打印
+// CMy03_EditorView 
 
 BOOL CMy03_EditorView::OnPreparePrinting(CPrintInfo* pInfo)
 {
-	// 默认准备
+
 	return DoPreparePrinting(pInfo);
 }
 
 void CMy03_EditorView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO:  添加额外的打印前进行的初始化过程
 }
 
 void CMy03_EditorView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-	// TODO:  添加打印后进行的清理过程
 }
 
 
-// CMy03_EditorView 诊断
+// CMy03_EditorView 
 
 #ifdef _DEBUG
 void CMy03_EditorView::AssertValid() const
@@ -106,28 +100,26 @@ CMy03_EditorDoc* CMy03_EditorView::GetDocument() const // 非调试版本是内联的
 #endif //_DEBUG
 
 
-// CMy03_EditorView 消息处理程序
+// CMy03_EditorView 
 
-//窗口创建后自动调用
 int CMy03_EditorView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CView::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	// TODO:  在此添加您专用的创建代码
 
-	//获取字体信息
+	//get text info
 	CClientDC dc(this);
 
-	TEXTMETRIC tm; //字体信息结构体
+	TEXTMETRIC tm; //text info struct
 
 	dc.GetTextMetrics(&tm);
 
 
-	//继承与CWnd
-	CreateSolidCaret(tm.tmAveCharWidth/8, tm.tmHeight); //创建插入符
+	//implement fromCWnd
+	CreateSolidCaret(tm.tmAveCharWidth/8, tm.tmHeight); //create inserter
 
-	ShowCaret(); //显示
+	ShowCaret(); //display
 
 
 
@@ -138,11 +130,9 @@ int CMy03_EditorView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 void CMy03_EditorView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	// TODO:  在此添加消息处理程序代码和/或调用默认值
 
-	SetCaretPos(point); //移动插入符
+	SetCaretPos(point); 
 
-	//保存点击坐标
 	m_point = point;
 
 	str = TEXT("");
@@ -152,45 +142,42 @@ void CMy03_EditorView::OnLButtonDown(UINT nFlags, CPoint point)
 	CView::OnLButtonDown(nFlags, point);
 }
 
-//点击键盘，启动调用
 void CMy03_EditorView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	// TODO:  在此添加消息处理程序代码和/或调用默认值
 	CClientDC dc(this);
 
 	
 
 
-	if (nChar == VK_RETURN) //换行
+	if (nChar == VK_RETURN) //newline
 	{
 		str.Empty();
-		//获取字体信息，
 
 
-		TEXTMETRIC tm; //字体信息结构体
+		TEXTMETRIC tm; //
 
 		dc.GetTextMetrics(&tm);
 
 		m_point.y = m_point.y + tm.tmHeight;
 
 	}
-	else if (nChar == VK_BACK) //退格
+	else if (nChar == VK_BACK) //backspace
 	{
-		//获取背景图
+		//get the background
 		COLORREF color = dc.GetBkColor();
 		/*auto a = dc.GetBkColor();*/
 
-		//设置写字的颜色
+		//set text color
 		COLORREF oldColor = dc.SetTextColor(color);
 
-		//白色重写一次
+		//white rewrite once
 		dc.TextOutW(m_point.x, m_point.y, str);
 
-		//去掉最后一个字符
+		//exclue the last 
 		str = str.Left(str.GetLength() - 1);
 		
 
-		//恢复原来颜色
+		//recover the color
 		dc.SetTextColor(oldColor);
 	}
 	else
@@ -204,7 +191,7 @@ void CMy03_EditorView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 	// Select the font into the device context
 	CFont* pOldFont = dc.SelectObject(&font);
 
-	CSize size = dc.GetTextExtent(str); //获取字符串长度
+	CSize size = dc.GetTextExtent(str); 
 	int x = m_point.x + size.cx;
 	//int x = m_point.x + size.cx;
 	int y = m_point.y;

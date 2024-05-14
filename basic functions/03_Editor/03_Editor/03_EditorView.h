@@ -1,5 +1,5 @@
 
-// 03_EditorView.h : CMy03_EditorView 类的接口
+// 03_EditorView.h : CMy03_EditorView 
 //
 
 #pragma once
@@ -8,7 +8,7 @@
 
 class CMy03_EditorView : public CView
 {
-protected: // 仅从序列化创建
+protected: 
 	CMy03_EditorView();
 	DECLARE_DYNCREATE(CMy03_EditorView)
 
@@ -16,19 +16,19 @@ protected: // 仅从序列化创建
 public:
 	CMy03_EditorDoc* GetDocument() const;
 
-// 操作
+// opearation
 public:
 
-// 重写
+// override
 public:
-	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图
+	virtual void OnDraw(CDC* pDC);  // overirde for draw
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
 	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
 	virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
-// 实现
+// impl
 public:
 	virtual ~CMy03_EditorView();
 #ifdef _DEBUG
@@ -38,7 +38,7 @@ public:
 
 protected:
 
-// 生成的消息映射函数
+
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
@@ -52,7 +52,7 @@ private:
 	CString str;
 };
 
-#ifndef _DEBUG  // 03_EditorView.cpp 中的调试版本
+#ifndef _DEBUG  // 03_EditorView.cpp Debug version
 inline CMy03_EditorDoc* CMy03_EditorView::GetDocument() const
    { return reinterpret_cast<CMy03_EditorDoc*>(m_pDocument); }
 #endif

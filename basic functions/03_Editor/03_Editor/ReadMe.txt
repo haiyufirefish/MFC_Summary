@@ -1,88 +1,89 @@
-﻿================================================================================
-    MICROSOFT 基础类库 : 03_Editor 项目概述
-===============================================================================
+﻿================================================== ==============================
+     MICROSOFT basic class library: 03_Editor project overview
+================================================== =============================
 
-应用程序向导已为您创建了此 03_Editor 应用程序。此应用程序不仅演示 Microsoft 基础类的基本使用方法，还可作为您编写应用程序的起点。
+The Application Wizard has created this 03_Editor application for you. This application not only demonstrates the basic use of Microsoft foundation classes, but also serves as a starting point for writing your applications.
 
-本文件概要介绍组成 03_Editor 应用程序的每个文件的内容。
+This document outlines the contents of each file that makes up the 03_Editor application.
 
 03_Editor.vcxproj
-    这是使用应用程序向导生成的 VC++ 项目的主项目文件，其中包含生成该文件的 Visual C++ 的版本信息，以及有关使用应用程序向导选择的平台、配置和项目功能的信息。
+     This is the main project file for a VC++ project generated using the AppWizard. It contains information about the version of Visual C++ that generated the file, as well as information about the platform, configuration, and project features selected using the AppWizard.
 
 03_Editor.vcxproj.filters
-    这是使用“应用程序向导”生成的 VC++ 项目筛选器文件。它包含有关项目文件与筛选器之间的关联信息。在 IDE 中，通过这种关联，在特定节点下以分组形式显示具有相似扩展名的文件。例如，“.cpp”文件与“源文件”筛选器关联。
+     This is a VC++ project filter file generated using the Application Wizard. It contains information about the association between project files and filters. In the IDE, this association allows files with similar extensions to be displayed in groups under specific nodes. For example, ".cpp" files are associated with the "Source Files" filter.
 
 03_Editor.h
-    这是应用程序的主头文件。
-    其中包括其他项目特定的标头（包括 Resource.h），并声明 CMy03_EditorApp 应用程序类。
+     This is the main header file for the application.
+     This includes other project-specific headers (including Resource.h) and declares the CMy03_EditorApp application class.
 
 03_Editor.cpp
-    这是包含应用程序类 CMy03_EditorApp 的主应用程序源文件。
+     This is the main application source file containing the application class CMy03_EditorApp.
 
 03_Editor.rc
-    这是程序使用的所有 Microsoft Windows 资源的列表。它包括 RES 子目录中存储的图标、位图和光标。此文件可以直接在 Microsoft Visual C++ 中进行编辑。项目资源包含在 2052 中。
+     This is a list of all Microsoft Windows resources used by the program. It includes icons, bitmaps, and cursors stored in the RES subdirectory. This file can be edited directly in Microsoft Visual C++. Project resources are included in 2052.
 
 res\03_Editor.ico
-    这是用作应用程序图标的图标文件。此图标包括在主资源文件 03_Editor.rc 中。
+     This is the icon file used as the application icon. This icon is included in the main resource file 03_Editor.rc.
 
 res\My03_Editor.rc2
-    此文件包含不在 Microsoft Visual C++ 中进行编辑的资源。您应该将不可由资源编辑器编辑的所有资源放在此文件中。
+     This file contains resources that are not editable in Microsoft Visual C++. You should place all resources that are not editable by the resource editor in this file.
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// //////////////////////////////
 
-对于主框架窗口：
-    该项目包含一个标准的 MFC 接口。
+For the main frame window:
+     This project contains a standard MFC interface.
 
 MainFrm.h, MainFrm.cpp
-    这些文件中包含框架类 CMainFrame，该类派生自
-    CFrameWnd 并控制所有 SDI 框架功能。
+     These files contain the frame class CMainFrame, which is derived from
+     CFrameWnd and controls all SDI frame functionality.
 
 res\Toolbar.bmp
-    此位图文件用于为工具栏创建平铺图像。
-    初始工具栏和状态栏在 CMainFrame 类中构造。使用资源编辑器编辑此工具栏位图，并更新 03_Editor.rc 中的 IDR_MAINFRAME TOOLBAR 数组以添加工具栏按钮。
-/////////////////////////////////////////////////////////////////////////////
+     This bitmap file is used to create tiled images for toolbars.
+     The initial toolbar and status bar are constructed in the CMainFrame class. Use the Resource Editor to edit this toolbar bitmap and update the IDR_MAINFRAME TOOLBAR array in 03_Editor.rc to add the toolbar buttons.
+///////////////////////////////////////////////////// //////////////////////////////
 
-应用程序向导创建一种文档类型和一个视图：
+The AppWizard creates a document type and a view:
 
-03_EditorDoc.h、03_EditorDoc.cpp - 文档
-    这些文件包含 CMy03_EditorDoc 类。编辑这些文件以添加特殊文档数据并实现文件保存和加载（通过 CMy03_EditorDoc::Serialize）。
+03_EditorDoc.h, 03_EditorDoc.cpp - Documentation
+     These files contain the CMy03_EditorDoc class. Edit these files to add special document data and enable file saving and loading (via CMy03_EditorDoc::Serialize).
 
-03_EditorView.h、03_EditorView.cpp - 文档视图
-    这些文件包含 CMy03_EditorView 类。
-    CMy03_EditorView 对象用于查看 CMy03_EditorDoc 对象。
-
-
+03_EditorView.h, 03_EditorView.cpp - Document View
+     These files contain the CMy03_EditorView class.
+     The CMy03_EditorView object is used to view the CMy03_EditorDoc object.
 
 
-/////////////////////////////////////////////////////////////////////////////
 
-其他功能：
 
-ActiveX 控件
-    该应用程序包含对使用 ActiveX 控件的支持。
+///////////////////////////////////////////////////// //////////////////////////////
 
-打印和打印预览支持
-    应用程序向导通过从 MFC 库调用 CView 类中的成员函数生成代码，来处理打印、打印设置和打印预览命令。
+Other functions:
 
-/////////////////////////////////////////////////////////////////////////////
+ActiveX control
+     The application includes support for using ActiveX controls.
 
-其他标准文件:
+Print and print preview support
+     AppWizard generates code to handle printing, print setup, and print preview commands by calling member functions in the CView class from the MFC library.
+
+///////////////////////////////////////////////////// //////////////////////////////
+
+Other standard documents:
 
 StdAfx.h, StdAfx.cpp
-    这些文件用于生成名为 03_Editor.pch 的预编译头 (PCH) 文件和名为 StdAfx.obj 的预编译类型文件。
+     These files are used to generate a precompiled header (PCH) file named 03_Editor.pch and a precompiled type file named StdAfx.obj.
 
 Resource.h
-    这是标准头文件，可用于定义新的资源 ID。Microsoft Visual C++ 将读取并更新此文件。
+     This is a standard header file that can be used to define new resource IDs. Microsoft Visual C++ will read and update this file.
 
 03_Editor.manifest
-	Windows XP 使用应用程序清单文件来描述特定版本的并行程序集的应用程序依赖项。加载程序使用这些信息来从程序集缓存中加载相应的程序集，并保护其不被应用程序访问。应用程序清单可能会包含在内，以作为与应用程序可执行文件安装在同一文件夹中的外部 .manifest 文件进行重新分发，它还可能以资源的形式包含在可执行文件中。
-/////////////////////////////////////////////////////////////////////////////
+Windows XP uses an application manifest file to describe application dependencies for a specific version of a side-by-side assembly. The loader uses this information to load the corresponding assembly from the assembly cache and protect it from access by the application. The application manifest may be included for redistribution as an external .manifest file installed in the same folder as the application executable, or it may be included in the executable as a resource.
+///////////////////////////////////////////////////// //////////////////////////////
 
-其他注释:
+Other notes:
 
-应用程序向导使用“TODO:”来指示应添加或自定义的源代码部分。
+The AppWizard uses "TODO:" to indicate portions of the source code that should be added or customized.
 
-如果应用程序使用共享 DLL 中的 MFC，您将需要重新分发 MFC DLL。如果应用程序所使用的语言与操作系统的区域设置不同，则还需要重新分发相应的本地化资源 mfc110XXX.DLL。
-有关上述话题的更多信息，请参见 MSDN 文档中有关重新分发 Visual C++ 应用程序的部分。
+If your application uses MFC from a shared DLL, you will need to redistribute the MFC DLL. If your application is in a language that is different from the locale of the operating system, you also need to redistribute the corresponding localized resource mfc110XXX.DLL.
+For more information on the above topics, see the section on redistributing Visual C++ applications in the MSDN documentation.
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// //////////////////////////////
+///////////////////////////////////////////////////// //////////////////////////////

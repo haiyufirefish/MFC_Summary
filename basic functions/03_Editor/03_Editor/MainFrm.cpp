@@ -25,7 +25,7 @@ END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-	ID_SEPARATOR,           // 状态行指示器
+	ID_SEPARATOR,           
 	ID_INDICATOR_CAPS,
 	ID_INDICATOR_NUM,
 	ID_INDICATOR_SCRL,
@@ -35,7 +35,6 @@ static UINT indicators[] =
 
 CMainFrame::CMainFrame()
 {
-	// TODO:  在此添加成员初始化代码
 }
 
 CMainFrame::~CMainFrame()
@@ -50,18 +49,18 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
 		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
 	{
-		TRACE0("未能创建工具栏\n");
-		return -1;      // 未能创建
+		TRACE0("Failed to create toolbar\n");
+		return -1;      
 	}
 
 	if (!m_wndStatusBar.Create(this))
 	{
-		TRACE0("未能创建状态栏\n");
-		return -1;      // 未能创建
+		TRACE0("Failed to create status bar\n");
+		return -1;      
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
-	// TODO:  如果不需要可停靠工具栏，则删除这三行
+	// TODO:  If you don't need the dockable toolbar, delete these three lines
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndToolBar);
@@ -74,13 +73,12 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
-	// TODO:  在此处通过修改
-	//  CREATESTRUCT cs 来修改窗口类或样式
+	//  CREATESTRUCT cs to modify the window class or style
 
 	return TRUE;
 }
 
-// CMainFrame 诊断
+// CMainFrame 
 
 #ifdef _DEBUG
 void CMainFrame::AssertValid() const
@@ -95,5 +93,5 @@ void CMainFrame::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 
-// CMainFrame 消息处理程序
+
 

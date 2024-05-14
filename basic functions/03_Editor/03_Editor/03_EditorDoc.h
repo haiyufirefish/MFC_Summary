@@ -1,5 +1,5 @@
 
-// 03_EditorDoc.h : CMy03_EditorDoc 类的接口
+// 03_EditorDoc.h : CMy03_EditorDoc interface 
 //
 
 
@@ -8,17 +8,10 @@
 
 class CMy03_EditorDoc : public CDocument
 {
-protected: // 仅从序列化创建
+protected: 
 	CMy03_EditorDoc();
 	DECLARE_DYNCREATE(CMy03_EditorDoc)
 
-// 特性
-public:
-
-// 操作
-public:
-
-// 重写
 public:
 	virtual BOOL OnNewDocument();
 	virtual void Serialize(CArchive& ar);
@@ -27,7 +20,7 @@ public:
 	virtual void OnDrawThumbnail(CDC& dc, LPRECT lprcBounds);
 #endif // SHARED_HANDLERS
 
-// 实现
+// impl
 public:
 	virtual ~CMy03_EditorDoc();
 #ifdef _DEBUG
@@ -37,12 +30,12 @@ public:
 
 protected:
 
-// 生成的消息映射函数
+// generate mapping functions
 protected:
 	DECLARE_MESSAGE_MAP()
 
 #ifdef SHARED_HANDLERS
-	// 用于为搜索处理程序设置搜索内容的 Helper 函数
+	// Helper function used to set the search content for the search handler
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
 };

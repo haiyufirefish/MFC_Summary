@@ -1,10 +1,10 @@
 
-// 03_EditorDoc.cpp : CMy03_EditorDoc 类的实现
+// 03_EditorDoc.cpp : CMy03_EditorDoc impl
 //
 
 #include "stdafx.h"
-// SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
-// ATL 项目中进行定义，并允许与该项目共享文档代码。
+// SHARED_HANDLERS can be used to implement preview, thumbnail and search filter handles
+// Defined in an ATL project and allow documentation code to be shared with that project.
 #ifndef SHARED_HANDLERS
 #include "03_Editor.h"
 #endif
@@ -25,11 +25,10 @@ BEGIN_MESSAGE_MAP(CMy03_EditorDoc, CDocument)
 END_MESSAGE_MAP()
 
 
-// CMy03_EditorDoc 构造/析构
+// CMy03_EditorDoc 
 
 CMy03_EditorDoc::CMy03_EditorDoc()
 {
-	// TODO:  在此添加一次性构造代码
 
 }
 
@@ -42,8 +41,7 @@ BOOL CMy03_EditorDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	// TODO:  在此添加重新初始化代码
-	// (SDI 文档将重用该文档)
+	
 
 	return TRUE;
 }
@@ -51,26 +49,24 @@ BOOL CMy03_EditorDoc::OnNewDocument()
 
 
 
-// CMy03_EditorDoc 序列化
+// CMy03_EditorDoc 
 
 void CMy03_EditorDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-		// TODO:  在此添加存储代码
 	}
 	else
 	{
-		// TODO:  在此添加加载代码
 	}
 }
 
 #ifdef SHARED_HANDLERS
 
-// 缩略图的支持
+// thumnails support
 void CMy03_EditorDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
-	// 修改此代码以绘制文档数据
+	// Modify this code to plot document data
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
 
 	CString strText = _T("TODO: implement thumbnail drawing here");
@@ -88,14 +84,14 @@ void CMy03_EditorDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 	dc.SelectObject(pOldFont);
 }
 
-// 搜索处理程序的支持
+// Search handler support
 void CMy03_EditorDoc::InitializeSearchContent()
 {
 	CString strSearchContent;
-	// 从文档数据设置搜索内容。
-	// 内容部分应由“;”分隔
+	// Set search content from document data.
+	// Content parts should be separated by ";"
 
-	// 例如:     strSearchContent = _T("point;rectangle;circle;ole object;")；
+	//      strSearchContent = _T("point;rectangle;circle;ole object;")；
 	SetSearchContent(strSearchContent);
 }
 
@@ -119,7 +115,7 @@ void CMy03_EditorDoc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// CMy03_EditorDoc 诊断
+// CMy03_EditorDoc diagnostic
 
 #ifdef _DEBUG
 void CMy03_EditorDoc::AssertValid() const
@@ -134,4 +130,4 @@ void CMy03_EditorDoc::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 
-// CMy03_EditorDoc 命令
+// CMy03_EditorDoc command
