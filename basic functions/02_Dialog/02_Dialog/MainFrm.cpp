@@ -98,16 +98,17 @@ void CMainFrame::Dump(CDumpContext& dc) const
 void CMainFrame::OnDialogExec()
 {
 	CDialog dlg(IDD_DIALOG1); 
+	// set the diaglog as modal 
 	dlg.DoModal(); 
 
 }
 
 void CMainFrame::OnDialogShow()
 {
-
+	//MyDialog dlg;
+	//dlg.DoModal();
 	dlg.ShowWindow(SW_SHOWNORMAL);
-
-
+	
 }
 
 void CMainFrame::OnDialog32773()
